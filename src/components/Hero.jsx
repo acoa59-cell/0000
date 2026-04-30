@@ -1,58 +1,72 @@
 import { motion } from 'framer-motion'
 
 // ─── floating card definitions ──────────────────────────────────────────────
+// Card sizes use vw so they scale with viewport width.
+// top starts at 22% to respect the ~80px nav safe-zone.
 const CARDS = [
   {
     id: 1,
     label: '焙可狐 × Brand',
     sublabel: 'IP 插畫 · 品牌識別',
-    top: '8%',
-    left: '3%',
+    top: '22%',
+    left: '2%',
     rotate: -6,
     delay: 0,
     duration: 5.8,
-    size: 'w-40 h-48 md:w-52 md:h-64',
+    width: '18vw',
+    height: '22vw',
+    minWidth: '120px',
+    minHeight: '148px',
     accent: '#4ECDC4',
-    zIndex: 20,
+    zIndex: 10,
   },
   {
     id: 2,
     label: '焙可狐 × Marketing',
     sublabel: '行銷圖 · 社群視覺',
-    top: '5%',
-    right: '4%',
+    top: '22%',
+    right: '2%',
     rotate: 5,
     delay: 0.8,
     duration: 4.4,
-    size: 'w-36 h-44 md:w-48 md:h-60',
+    width: '16vw',
+    height: '20vw',
+    minWidth: '110px',
+    minHeight: '136px',
     accent: '#A8E063',
-    zIndex: 20,
+    zIndex: 10,
   },
   {
     id: 3,
     label: '焙可狐 × UI',
     sublabel: 'UI/UX · 介面設計',
-    top: '52%',
-    left: '5%',
+    top: '55%',
+    left: '3%',
     rotate: 3,
     delay: 1.4,
     duration: 6.2,
-    size: 'w-32 h-40 md:w-44 md:h-52',
+    width: '15vw',
+    height: '18vw',
+    minWidth: '100px',
+    minHeight: '124px',
     accent: '#F6AD55',
-    zIndex: 20,
+    zIndex: 10,
   },
   {
     id: 4,
     label: '焙可狐 × Visual',
     sublabel: '視覺設計 · IP 開發',
-    top: '55%',
-    right: '3%',
+    top: '58%',
+    right: '2%',
     rotate: -4,
     delay: 2,
     duration: 5.0,
-    size: 'w-36 h-44 md:w-48 md:h-56',
+    width: '16vw',
+    height: '20vw',
+    minWidth: '110px',
+    minHeight: '136px',
     accent: '#FC8181',
-    zIndex: 20,
+    zIndex: 10,
   },
 ]
 
@@ -116,7 +130,13 @@ function FloatingCard({ card }) {
           delay: card.delay,
         }}
         whileHover={{ scale: 1.06, transition: { duration: 0.25 } }}
-        className={`${card.size} glass-card rounded-2xl cursor-pointer overflow-hidden flex flex-col`}
+        style={{
+          width: card.width,
+          height: card.height,
+          minWidth: card.minWidth,
+          minHeight: card.minHeight,
+        }}
+        className="glass-card rounded-2xl cursor-pointer overflow-hidden flex flex-col"
       >
         {/* image placeholder */}
         <div
@@ -216,7 +236,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="relative z-30 flex items-center justify-between px-6 md:px-12 pt-6 md:pt-8"
+        className="relative z-50 flex items-center justify-between px-6 md:px-12 pt-6 md:pt-8"
       >
         <span className="text-white/60 text-sm font-semibold tracking-[0.2em] uppercase">
           Aco Lin
@@ -278,12 +298,16 @@ export default function Hero() {
               LIN
             </motion.span>
 
-            {/* Row 3 — outlined stroke text for depth */}
+            {/* Row 3 — clean single-weight stroke, no fill */}
             <motion.span
               custom={0.4}
               variants={fadeUp}
-              className="block text-[10vw] md:text-[7.5vw] lg:text-[6rem] xl:text-[7rem] text-stroke"
-              style={{ letterSpacing: '0.04em' }}
+              className="block text-[10vw] md:text-[7.5vw] lg:text-[6rem] xl:text-[7rem]"
+              style={{
+                letterSpacing: '0.04em',
+                WebkitTextStroke: '1.5px rgba(255,255,255,0.35)',
+                color: 'transparent',
+              }}
             >
               PORTFOLIO
             </motion.span>
