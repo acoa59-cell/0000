@@ -152,7 +152,7 @@ function FloatingCard({ card }) {
           >
             🦊
           </div>
-          <span className="text-[10px] md:text-xs text-white/40 tracking-widest uppercase">
+          <span className="hidden md:block text-[10px] md:text-xs text-white/40 tracking-widest uppercase">
             插畫待置入
           </span>
           {/* accent dot */}
@@ -162,8 +162,8 @@ function FloatingCard({ card }) {
           />
         </div>
 
-        {/* card footer */}
-        <div className="px-3 py-2.5 border-t border-white/10">
+        {/* card footer — hidden on mobile, visible from md up */}
+        <div className="hidden md:block px-3 py-2.5 border-t border-white/10">
           <p className="text-white text-[11px] md:text-xs font-semibold leading-tight">
             {card.label}
           </p>
