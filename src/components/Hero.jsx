@@ -298,15 +298,26 @@ export default function Hero() {
               LIN
             </motion.span>
 
-            {/* Row 3 — clean single-weight stroke, no fill */}
+            {/* Row 3 — frosted glass fill: diagonal milky gradient clipped to text */}
             <motion.span
               custom={0.4}
               variants={fadeUp}
               className="block text-[10vw] md:text-[7.5vw] lg:text-[6rem] xl:text-[7rem]"
               style={{
                 letterSpacing: '0.04em',
-                WebkitTextStroke: '1.5px rgba(255,255,255,0.35)',
-                color: 'transparent',
+                background: `linear-gradient(
+                  140deg,
+                  rgba(255,255,255,0.92) 0%,
+                  rgba(190,235,248,0.60) 28%,
+                  rgba(255,255,255,0.30) 52%,
+                  rgba(180,228,245,0.72) 74%,
+                  rgba(255,255,255,0.88) 100%
+                )`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                filter:
+                  'drop-shadow(0 2px 18px rgba(78,205,196,0.40)) drop-shadow(0 1px 0px rgba(255,255,255,0.55))',
               }}
             >
               PORTFOLIO
